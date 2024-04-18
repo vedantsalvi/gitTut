@@ -1,5 +1,4 @@
-def priority():
-    pass
+
 
 def fcfs(arrival_times, burst_times):
     n = len(arrival_times)
@@ -111,12 +110,6 @@ def srtf(arrival_times, burst_times):
             # If the process is not completed, move to the next time unit
             current_time += 1
 
-    # Calculate average waiting time and average turnaround time
     avg_WT = sum(WT) / n
     avg_TAT = sum(TAT) / n
-
-    return WT, TAT, avg_WT, avg_TAT
-
-
-def priority():
-    pass
+    return WT, TAT , avg_WT,avg_TAT

@@ -1,5 +1,5 @@
 import tkinter as tk
-from algos import fcfs, sjf, srtf, priority  # Import the fcfs function from scheduling.py
+from algos import fcfs, sjf, srtf  # Import the fcfs function from scheduling.py
 import rr
 
 # Function to perform FCFS scheduling and calculate waiting time, turnaround time, and average waiting time
