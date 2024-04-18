@@ -1,6 +1,6 @@
 import tkinter as tk
 
-from algos import fcfs, sjf, srtf  # Import the fcfs function from scheduling.py
+from algos import fcfs, sjf, srtf,prioritys  # Import the fcfs function from scheduling.py
 import rr
 
 # Function to perform FCFS scheduling and calculate waiting time, turnaround time, and average waiting time
@@ -24,7 +24,7 @@ def on_button_click():
         avg_tat = result_rr['avg_tat']
     elif selected_algo == "Priority":
         priority = list(map(int, entry_priority.get().split()))  # Get the priority list from the input
-        wt, tat, avg_wt, avg_tat = priority(arrival_times, burst_times, priority)
+        wt, tat, avg_wt, avg_tat = prioritys(arrival_times, burst_times, priority)
     elif selected_algo == "SRTF":
         wt, tat, avg_wt, avg_tat = srtf(arrival_times, burst_times)
     elif selected_algo == "SJF":

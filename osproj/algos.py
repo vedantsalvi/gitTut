@@ -1,3 +1,53 @@
+class Process:
+    def __init__(self, arrival_time, burst_time, priority):
+        self.arrival_time = arrival_time
+        self.burst_time = burst_time
+        self.priority = priority
+
+def prioritys(arrival_time, burst_time, priority):
+    n = len(arrival_time)
+    processes = []
+    # List to store waiting time for each process
+    wt = [0] * n
+    # List to store turnaround time for each process
+    tat = [0] * n
+    # Copy burst times to avoid modifying the original list
+    remaining_burst_time = burst_time[:]
+
+    for i in range(n):
+        p = Process(arrival_time[i], burst_time[i], priority[i])
+        processes.append(p)
+
+    current_time = 0  # Keep track of current time
+
+    while any(remaining_burst_time):
+        min_priority = float('inf')
+        selected_process = None
+
+        for p in processes:
+            if remaining_burst_time[processes.index(p)] > 0 and p.arrival_time <= current_time:
+                if p.priority < min_priority:
+                    min_priority = p.priority
+                    selected_process = p
+
+        if selected_process:
+            idx = processes.index(selected_process)
+            remaining_burst_time[idx] -= 1
+
+            if remaining_burst_time[idx] == 0:
+                tat[idx] = current_time + 1 - arrival_time[idx]
+            else:
+                # Waiting time is the current time minus arrival time minus burst time remaining
+                wt[idx] = current_time - arrival_time[idx] - (burst_time[idx] - remaining_burst_time[idx])
+
+        current_time += 1
+    wtd=[]
+    for i in range(n):
+        wtd.append(tat[i] - burst_time[i])
+
+    return wtd, tat ,sum(wtd)/n,sum(tat)/n
+
+
 
 
 def fcfs(arrival_times, burst_times):
