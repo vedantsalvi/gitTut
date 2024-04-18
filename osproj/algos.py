@@ -1,3 +1,5 @@
+def priority():
+    pass
 
 def fcfs(arrival_times, burst_times):
     n = len(arrival_times)
