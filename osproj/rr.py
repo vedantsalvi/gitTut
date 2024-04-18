@@ -2,7 +2,7 @@ from typing import List, Dict, Any
 
 def rr(arrival_time: List[int], burst_time: List[int], time_quantum: int) -> Dict[str, Any]:
     if time_quantum<1:
-        return 0,0,0,0
+        return {'tat_list': list(0), 'wt_list': list(0), 'avg_tat': list(0), 'avg_wt': list(0)}
     processes_info = [
         {'job': f'P{i+1}' if len(arrival_time) > 26 else chr(i + 10 + ord('A')),
          'at': arrival_time[i],
